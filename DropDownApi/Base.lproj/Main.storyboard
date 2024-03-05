@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Your Job" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCV-1L-uig">
-                                <rect key="frame" x="20" y="413.66666666666669" width="353" height="50"/>
+                                <rect key="frame" x="20" y="403.66666666666669" width="353" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="AO2-yZ-XpB"/>
+                                    <constraint firstAttribute="height" constant="70" id="AO2-yZ-XpB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="txtFieldBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="G69-m4-h1t"/>
@@ -35,18 +35,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR4-4L-TSp">
-                                <rect key="frame" x="20" y="388.66666666666669" width="24.333333333333329" height="17"/>
+                                <rect key="frame" x="20" y="378.66666666666669" width="24.333333333333329" height="17"/>
                                 <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-DR-fXD">
+                                <rect key="frame" x="324" y="420" width="37" height="37"/>
+                                <color key="color" systemColor="systemOrangeColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rCV-1L-uig" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5nF-Mj-SLh"/>
+                            <constraint firstItem="SEx-DR-fXD" firstAttribute="centerY" secondItem="rCV-1L-uig" secondAttribute="centerY" id="9M7-HO-BBc"/>
                             <constraint firstItem="rCV-1L-uig" firstAttribute="top" secondItem="fR4-4L-TSp" secondAttribute="bottom" constant="8" id="Bxd-tT-mUe"/>
                             <constraint firstItem="7k7-FQ-vKb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="F3p-EA-SxX"/>
+                            <constraint firstItem="SEx-DR-fXD" firstAttribute="trailing" secondItem="rCV-1L-uig" secondAttribute="trailing" constant="-12" id="Poe-E5-O8S"/>
                             <constraint firstItem="rCV-1L-uig" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WGz-l6-ZF5"/>
                             <constraint firstItem="fR4-4L-TSp" firstAttribute="leading" secondItem="rCV-1L-uig" secondAttribute="leading" id="ctt-vF-uzs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rCV-1L-uig" secondAttribute="trailing" constant="20" id="jDj-U2-i4Q"/>
@@ -54,6 +60,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="SEx-DR-fXD" id="amo-RE-2a4"/>
                         <outlet property="txtField" destination="rCV-1L-uig" id="KGE-OQ-pKk"/>
                     </connections>
                 </viewController>
@@ -65,6 +72,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

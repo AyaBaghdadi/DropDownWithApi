@@ -11,8 +11,10 @@ import DropDown
 
 class ViewController: UIViewController {
 
-    /// **(1) link UITextField
+    /// **(1) link UITextField , indicator
     @IBOutlet weak var txtField: UITextField!
+    
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     /// **(4) create variable of DropDown
     let dropDown = DropDown()
@@ -25,9 +27,11 @@ class ViewController: UIViewController {
 
     }
 
-    /// **(2) link Did Begin of txtField && Add 'sender.endEditing(true)' to close Keybored if using UITextField && Change 'Any' to 'UITextField'
+    /// **(2) link Did Begin of txtField && Add 'sender.endEditing(true)' to close Keybored if using UITextField && Change 'Any' to 'UITextField' & Start indicator
     @IBAction func txtFieldBegin(_ sender: UITextField) {
+        
         sender.endEditing(true)
+        self.indicator.startAnimating()
         
         /// **(7) Call Function here and get your data
         DoRequestWithApiAndGetArray { strings in
@@ -37,6 +41,7 @@ class ViewController: UIViewController {
             ///  2. Add DataSource
             ///  3. Handle Selection Action
             ///  4. Show Dropdown
+            ///  5. Stop indicator
             
             self.dropDown.dataSource.removeAll()
             
@@ -62,8 +67,11 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
 
             let stringArray = ["IOS Developer", "Android Developer", "Flutter Developer" , "Frontend Developer" , "Backend Developer" , "Graphic Designer" , "Project Manager" , "Team Lead" , "Technical Team Lead" , "Tester" , "Project Coordinator" , "IOS Developer", "Android Developer", "Flutter Developer" , "Frontend Developer" , "Backend Developer" , "Graphic Designer" , "Project Manager" , "Team Lead" , "Technical Team Lead" , "Tester" , "Project Coordinator"]
-            
-            completion(stringArray)
+                        
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                self.indicator.stopAnimating()
+                completion(stringArray)
+            })
         }
     }
 }
